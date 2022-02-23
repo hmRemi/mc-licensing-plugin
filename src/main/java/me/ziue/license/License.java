@@ -30,8 +30,8 @@ public class License extends JavaPlugin {
 
         ChatUtil.loadPlugin();
 
-        Server database = new Server(License.getLicense().getConfig().getString("LICENSE"), License.getLicense().getConfig().getString("SERVER"), "hPractice");
-        database.request();
+        //Server database = new Server(License.getLicense().getConfig().getString("LICENSE"), License.getLicense().getConfig().getString("SERVER"), "hPractice");
+        //database.request();
     }
 
     @Override

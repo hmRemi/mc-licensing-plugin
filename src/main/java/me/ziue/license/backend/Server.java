@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 public class Server {
 
@@ -24,18 +27,22 @@ public class Server {
     private String ips;
 
 
+    // Check license
     public Server(String license, String server, String plugin) {
         this.license = license;
         this.server = server;
         this.plugin = plugin;
     }
 
-    public Server(String license, String server, String plugin, String discord, String ips) {
-        this.license = license;
-        this.server = server;
-        this.plugin = plugin;
+    // Create license
+    public Server(String discord, String plugin, String license, String createdby, String createdin, String maxips, String server) {
         this.discord = discord;
-        this.ips = ips;
+        this.plugin = plugin;
+        this.license = license;
+        this.generatedBy = createdby;
+        this.generatedIn = createdin;
+        this.ips = maxips;
+        this.server = server;
     }
 
     public void debug() {
@@ -50,10 +57,36 @@ public class Server {
         }
     }
 
+    public void authenticateDatabase(String discord, String plugin, String license, String createdby, String createdin, String maxips, String server) {
+
+        String user = License.getLicense().getConfig().getString("USER");
+        String password = License.getLicense().getConfig().getString("PASSWORD");
+
+        try {
+
+            // Create connection with database
+            Connection connection = DriverManager.getConnection(server, user, password);
+
+            // Create statement
+            Statement statement = connection.createStatement();
+
+            // Execute SQL Query
+            String sql = "INSERT INTO licenses " + " (DISCORD, PLUGIN, LICENSE, `CREATED-BY`, `CREATED-IN`, `MAX-IPS`)" + " values ('" + discord + "', '" + plugin + "', '" + license + "', '" + createdby + "', '" + createdin + "', '" + maxips + "')";
+
+            statement.executeUpdate(sql);
+
+            System.out.println(sql + " has been added.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Read license and get information
     public void request() {
         try {
             URL url = new URL(server + "/request.php");
             URLConnection connection = url.openConnection();
+
             if (debug) System.out.println("[DEBUG] Connecting to request server: " + server + "/request.php");
             connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
 
@@ -106,6 +139,10 @@ public class Server {
 
     public String getDiscord() {
         return discord;
+    }
+
+    public String getIPS() {
+        return ips;
     }
 
     public String getLicense() {

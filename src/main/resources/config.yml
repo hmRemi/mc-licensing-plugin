@@ -1,3 +1,7 @@
-SERVER: SERVER-HERE
-LICENSE: LICENSE-HERE
-REQUEST_KEY: REQUEST_KEY HERE
+SERVER: https://hlicense.000webhostapp.com/request.php/
+REQUEST_KEY: vmLAyzmppLLDgvqMPFyHLSkWdyHYqRImNueC1OLK
+
+DATABASE:
+  USER: usrpy6dmmpto79vb
+  PASSWORD: 03hPbMmwwoOyFYdk8dpU
+  SERVER-DB: jdbc:mysql://bu5pptaocnbhyinojqsq-mysql.services.clever-cloud.com:3306/bu5pptaocnbhyinojqsq
