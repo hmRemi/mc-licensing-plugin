@@ -1,7 +1,7 @@
-SERVER: https://hlicense.000webhostapp.com/request.php/
-REQUEST_KEY: vmLAyzmppLLDgvqMPFyHLSkWdyHYqRImNueC1OLK
+SERVER: https://localhost/request.php/ # For checking license
+REQUEST_KEY: REQUEST_KEY
 
 DATABASE:
-  USER: usrpy6dmmpto79vb
-  PASSWORD: 03hPbMmwwoOyFYdk8dpU
-  SERVER-DB: jdbc:mysql://bu5pptaocnbhyinojqsq-mysql.services.clever-cloud.com:3306/bu5pptaocnbhyinojqsq
+  USER: root
+  PASSWORD: password
+  SERVER-DB: jdbc:mysql://localhost:3306/license

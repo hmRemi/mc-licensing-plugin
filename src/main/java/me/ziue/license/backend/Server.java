@@ -49,21 +49,12 @@ public class Server {
         debug = true;
     }
 
-    public void createLicense() {
-        try {
-            URL url = new URL(server + "/add.php");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void authenticateDatabase(String discord, String plugin, String license, String createdby, String createdin, String maxips, String server) {
 
-        String user = License.getLicense().getConfig().getString("USER");
-        String password = License.getLicense().getConfig().getString("PASSWORD");
+        String user = License.getLicense().getConfig().getString("DATABASE.USER");
+        String password = License.getLicense().getConfig().getString("DATABASE.PASSWORD");
 
         try {
-
             // Create connection with database
             Connection connection = DriverManager.getConnection(server, user, password);
 
