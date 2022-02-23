@@ -5,6 +5,7 @@ import lombok.Setter;
 import me.ziue.api.chat.ChatUtil;
 import me.ziue.api.command.CommandManager;
 import me.ziue.api.file.type.BasicConfigurationFile;
+import me.ziue.license.backend.ReturnType;
 import me.ziue.license.backend.Server;
 import me.ziue.license.backend.ServerConnector;
 import me.ziue.license.command.LicenseCommand;
@@ -16,6 +17,8 @@ public class License extends JavaPlugin {
 
     private BasicConfigurationFile configFile;
     private ServerConnector serverConnector;
+    private ReturnType returnType;
+    private Server licenseServer;
 
     @Override
     public void onEnable() {

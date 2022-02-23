@@ -12,15 +12,16 @@ public class Server {
     private String license;
     private String server;
     private String plugin;
-    // This MUST be the same as the REQUEST_KEY defined in config.php
+
     private String requestKey = License.getLicense().getConfig().getString("REQUEST_KEY"); //"vmLAyzmppLLDgvqMPFyHLSkWdyHYqRImNueC1OLK";
     private boolean debug = false;
 
     private boolean valid = false;
     private ReturnType returnType;
     private String generatedBy;
-    private String licenseTo;
+    private String discord;
     private String generatedIn;
+    private String ips;
 
 
     public Server(String license, String server, String plugin) {
@@ -29,8 +30,24 @@ public class Server {
         this.plugin = plugin;
     }
 
+    public Server(String license, String server, String plugin, String discord, String ips) {
+        this.license = license;
+        this.server = server;
+        this.plugin = plugin;
+        this.discord = discord;
+        this.ips = ips;
+    }
+
     public void debug() {
         debug = true;
+    }
+
+    public void createLicense() {
+        try {
+            URL url = new URL(server + "/add.php");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void request() {
@@ -64,7 +81,7 @@ public class Server {
 
                 generatedBy = responseSplited[2];
                 generatedIn = responseSplited[3];
-                licenseTo = responseSplited[1];
+                discord = responseSplited[1];
             } else {
                 if (debug) System.out.println("[DEBUG] FAILED VALIDATION");
                 valid = false;
@@ -87,8 +104,8 @@ public class Server {
         return returnType;
     }
 
-    public String getLicenseTo() {
-        return licenseTo;
+    public String getDiscord() {
+        return discord;
     }
 
     public String getLicense() {
@@ -107,8 +124,9 @@ public class Server {
         return generatedIn;
     }
 
-    public enum ReturnType {
+
+    /*public enum ReturnType {
         LICENSE_NOT_FOUND, PLUGIN_NAME_NOT_FOUND, REQUEST_KEY_NOT_FOUND, INVALID_REQUEST_KEY, INVALID_LICENSE, TOO_MANY_IPS, VALID;
-    }
+    }*/
 
 }
