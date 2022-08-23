@@ -1,3 +1,3 @@
-<h2> LicensePlugin<h2/>
+<h2>LicensePlugin</h2>
 
 Plugin 
