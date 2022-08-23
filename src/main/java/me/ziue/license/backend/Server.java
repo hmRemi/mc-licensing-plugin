@@ -16,7 +16,7 @@ public class Server {
     private String server;
     private String plugin;
 
-    private String requestKey = License.getLicense().getConfig().getString("REQUEST_KEY"); //"vmLAyzmppLLDgvqMPFyHLSkWdyHYqRImNueC1OLK";
+    private String requestKey = License.getLicense().getConfig().getString("REQUEST_KEY");
     private boolean debug = false;
 
     private boolean valid = false;
@@ -27,14 +27,18 @@ public class Server {
     private String ips;
 
 
-    // Check license
+    /*
+        Constructor used for checking licenses.
+    */
     public Server(String license, String server, String plugin) {
         this.license = license;
         this.server = server;
         this.plugin = plugin;
     }
 
-    // Create license
+    /*
+        Constructor used for creating licenses.
+    */
     public Server(String discord, String plugin, String license, String createdby, String createdin, String maxips, String server) {
         this.discord = discord;
         this.plugin = plugin;
@@ -66,7 +70,7 @@ public class Server {
 
             statement.executeUpdate(sql);
 
-            System.out.println(sql + " has been added.");
+            //System.out.println(sql + " has been added.");
         } catch (Exception e) {
             e.printStackTrace();
         }
