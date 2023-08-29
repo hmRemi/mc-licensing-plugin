@@ -1,4 +1,6 @@
-<h2>LicensePlugin</h2>
-A Minecraft Extension for your license panel, accessible though the use of in-game actions/commands.
+# Minecraft License Plugin Extension
 
-Free to use, but must credit.
+This plugin extends the functionality of my license system by allowing you to modify licenses through in-game commands. 
+With this extension, you can manage licenses without relying solely on a control panel.
+
+License Panel: https://github.com/ziuee/License-System-PHP
